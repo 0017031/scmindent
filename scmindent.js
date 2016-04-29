@@ -18,7 +18,10 @@ function numLeadingSpaces(s) {
     return 0;
   } else {
     s = s.replace(/^(\s*).*/, '$1');
-    s = s.replace(/\t/g, '        ');
+    s = s.replace(/\t/g, '    '); // 4 spaces for a tab
+    if (s.match(/\x0d/)) {  // for the '\n' left in "s" , on windows 
+      return 0;
+    }
     return s.length;
   }
 }
